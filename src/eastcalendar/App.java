@@ -40,16 +40,17 @@ public class App {
         animals[10] = "собака";
         animals[11] = "свинья";
         
-        int delta = (start_year - user_year)%60;
+        int delta = (user_year - start_year)%60;
         System.out.println(delta);
-        if(delta > 0){
-            color_index = (colors.length-1) - (int)(delta/12);
-            animal_index = (animals.length-1) - delta%12;
+        if(delta >= 0){
+            color_index = (int)(delta/12);
+            animal_index = delta%12;            
         }
         else{
-            color_index = (int)(Math.abs(delta)/12);
-            animal_index = (int)(Math.abs(delta)%12);            
+            color_index = (colors.length-1) + (int)(delta/12);
+            animal_index = (animals.length-1) + (delta+1)%12;
         }
+
         System.out.println(color_index);
         System.out.println(animal_index);
         System.out.printf("Год: %d\n", user_year);
